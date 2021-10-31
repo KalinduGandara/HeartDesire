@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'AboutAndLogInStyles.css' %}">
+
+    
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="signIn image">SIGN-IN</div>
+
+        <div class="form">
+            <div class="container">
+            <form method="post">
+            {% csrf_token %}
+                <label for="username"><b>Username</b></label>
+                <input id = 'username' type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="password"><b>Password</b></label>
+                <input id='password' type="password" placeholder="Enter Password" name="password" required>
+
+                <button type="submit" name = "sign">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw"> <a href="#"> Forgot password?</a></span>
+                  </form>
+                  </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

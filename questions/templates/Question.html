@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Heart's Desire</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'QStyle.css' %}" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+</head>
+
+<body>
+
+
+<section id="nav-bar">
+	<nav class="navbar navbar-expand-lg navbar-light">
+  		<a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}"></a>
+
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+  		</button>
+
+  		<div class="collapse navbar-collapse" id="navbarNav">
+    		<ul class="navbar-nav ml-auto">
+      			<li class="nav-item">
+        				<a class="nav-link" href="{% url 'home:home' %}">Home</a>
+      			</li>
+      			<li class="nav-item">
+        				<a class="nav-link" href="#">About Us</a>
+      			</li>
+			    	<li class="nav-item">
+			        <a class="nav-link" href="#">Contact</a>
+			    </li>
+			    <a href="{% url 'questions:questionD' %}" class="btn btn-signup">Sign Up</a>
+				<a href="{% url 'home:login' %}" class="btn btn-login">Log In</a>
+
+    		</ul>
+    		<div class="search-box">
+    			<img src="{% static 'img/search.png' %}">
+    			<input type="text" name="">
+    		</div>
+  		</div>
+	</nav>	
+</section>
+
+
+
+<section id= "Body">
+{% comment %} <!-----First Question--------> {% endcomment %}
+<div id="first">
+	
+    <div id="columnl">
+    <img src="{% static 'img/Q2.jpeg' %}" id="imgg">
+    </div>
+    <div id="column2" >
+    <form action="" method="post">
+		{% csrf_token %}
+    <br/><br/>
+
+    {% comment %} {% for question in questions %}
+	<p id="qpara">{{question.question}}</p>
+    <ul>
+    <li id="qli"> 
+    	<input required id="radio0{{forloop.counter}}" type="radio" name="q{{question.questionNumber}}" class="radio" value="0"/><label for="radio0{{forloop.counter}}" id="ans">{{question.answer0}}</label></li>
+    <li id="qli">
+    	<input required id="radio1{{forloop.counter}}" type="radio" name="q{{question.questionNumber}}" class="radio" value="1"/><label for="radio1{{forloop.counter}}" id="ans">{{question.answer1}}</label></li>
+    </ul>
+    <br /> <br /> 
+    {% endfor %} {% endcomment %}
+
+	
+	{% for question in questions %}
+	<p id="qpara">{{question.question}}</p>
+    <ul>
+    <li id="qli"> 
+    	<input checked  id="radio0{{forloop.counter}}" type="radio" name="q{{question.questionNumber}}" class="radio" value="0"/><label for="radio0{{forloop.counter}}" id="ans">{{question.answer0}}</label></li>
+    <li id="qli">
+    	<input  id="radio1{{forloop.counter}}" type="radio" name="q{{question.questionNumber}}" class="radio" value="1"/><label for="radio1{{forloop.counter}}" id="ans">{{question.answer1}}</label></li>
+    </ul>
+    <br /> <br /> 
+    {% endfor %}
+    
+    
+    <button type="submit" id="qsubmit">Continue </button>
+    </form>
+    </div>
+    <div id="column3">
+    <img src="{% static 'img/Q1.jpeg' %}" id= "imgb">
+    </div>
+
+    
+</div>
+</section>
+
+  
+
+{% comment %} <!-------------Subscribe us----------------> {% endcomment %}
+<section id="subscribe">
+	<div class="container">
+		<h2>Subscribe Us</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<form class="contact-form">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Your Name">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Email">
+					</div>
+					<button type="subscribe" class="btn btn-primary">Subscribe</button>
+					
+				</form>
+			</div>
+			<div class="col-md-6 contact-info">
+				<div class="follow"><b>Address: </b><i class="fa fa-map-marker"></i> Mihintale Road, Anuradhapura</div>
+
+				<div class="follow"><b>Phone: </b><i class="fa fa-phone"></i> +94 77 85 86 566</div>
+
+				<div class="follow"><b>Email: </b><i class="fa fa-envelope-o"></i> heartsdesire@gmail.com</div>
+
+				<div class="follow"><label><b>Social Media: </b></label>
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-youtube-play"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-google-plus"></i></a>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+{% comment %} <!---------------footer-------------> {% endcomment %}
+<section id="footer">
+	<div class="container text-center">
+		<p>Made by Demons</p>
+	</div>
+</section>
+
+</body>
+</html>
